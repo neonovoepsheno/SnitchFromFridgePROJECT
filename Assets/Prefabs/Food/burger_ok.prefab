@@ -22,13 +22,14 @@ GameObject:
   - component: {fileID: 212912272607985306}
   - component: {fileID: 114988692945459294}
   - component: {fileID: 60703524494702182}
+  - component: {fileID: 50155375918736070}
   m_Layer: 0
   m_Name: burger_ok
-  m_TagString: Untagged
+  m_TagString: food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1425915054228360
 GameObject:
   m_ObjectHideFlags: 0
@@ -73,6 +74,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50155375918736070
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1405586891957638}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 6200000, guid: 0b1b658ba7a195a41898cbd5c0375d7f, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!60 &60703524494702182
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -81,8 +102,8 @@ PolygonCollider2D:
   m_GameObject: {fileID: 1405586891957638}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_Material: {fileID: 6200000, guid: 0b1b658ba7a195a41898cbd5c0375d7f, type: 2}
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

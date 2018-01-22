@@ -50,7 +50,6 @@ public class SaturationBarController : MonoBehaviour {
     {
         currValue -= ((Time.deltaTime + coef_help) * maxValue) / TOTAL_TIME;
         saturationBar.value = currValue;
-        Debug.Log(coef_help);
 
         if (coef_help < COEF_MAX)
         {

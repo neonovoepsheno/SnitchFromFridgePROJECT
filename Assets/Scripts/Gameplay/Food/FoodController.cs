@@ -8,6 +8,11 @@ public class FoodController : MonoBehaviour
     private float start_time = 0;
     private float coef = 1;
     private float coef_for_rot = 0.43f;
+    private int changePositionCounter = 0;
+
+    private void Start()
+    {
+    }
 
     private void Update()
     {
@@ -17,8 +22,6 @@ public class FoodController : MonoBehaviour
         }
         start_time += Time.deltaTime;
     }
-
-
 
     public void OnMouseDown()
     {
@@ -51,5 +54,14 @@ public class FoodController : MonoBehaviour
             coef = 2;
             SaturationBarController.currValue += 20 * coef_for_rot;
         }
+    }
+
+    public void OnCollisionStay(Collision collision)
+    {
+      if (changePositionCounter < 5)
+      {
+        changePositionCounter++;
+        FoodControl.ChangeObjectPosition(this.gameObject);
+      }
     }
 }

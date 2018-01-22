@@ -10,7 +10,7 @@ public class FoodControl : MonoBehaviour {
     public GameObject[] food;
 
     private static List<GameObject> generatedFood = new List<GameObject>();
-    private static float[] y = { 6f, 3.65f, -1.96f, 14.6f, -4.66f };
+    private static float[] y = { 6f, 3.65f, -1.96f, 0.5f, -4.66f };
     private static float[] x = { -3f, 0f};
     private static GameObject[] foodPrefab;
 
@@ -30,6 +30,7 @@ public class FoodControl : MonoBehaviour {
                   for (int iter = 0; iter < Random.Range(0, 5); iter++)
                   {
                     GameObject tempFood = Instantiate(foodPrefab[i]);
+                    tempFood.AddComponent<FoodController>();
                     generatedFood.Add(tempFood);
                     tempFood.SetActive(true);
                     tempFood.transform.position = new Vector3(Random.Range(x[0], x[1]), y[Random.Range(0, y.Length - 1)], 6f);
@@ -41,6 +42,11 @@ public class FoodControl : MonoBehaviour {
                 Debug.Log("but why?");
             }
         }
+    }
+
+    public static void ChangeObjectPosition(GameObject foodObject)
+    {
+      foodObject.transform.position = new Vector3(Random.Range(x[0], x[1]), y[Random.Range(0, y.Length - 1)], 6f);
     }
 
     public static void ClearGeneratedFood()
