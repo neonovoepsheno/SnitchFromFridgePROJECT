@@ -1,0 +1,35 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public enum SwipeDirection { None = 0, Left = 1, Right = 2}
+
+public class SwipeManager : MonoBehaviour {
+
+    private static SwipeDirection Direction { set; get; }
+
+    private Vector3 touchPosition;
+    private float swipeResistanceX = 50f;
+
+    private void Update()
+    {
+        Direction = SwipeDirection.None;
+        if(Input.GetMouseButtonDown(0))
+        {
+            touchPosition = Input.mousePosition;
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            Vector2 deltaSwipe = touchPosition - Input.mousePosition;
+            if (Mathf.Abs(deltaSwipe.x) > swipeResistanceX)
+            {
+                Direction |= (deltaSwipe.x < 0) ? SwipeDirection.Right : SwipeDirection.Left;
+            }
+        }
+    }
+
+    public static bool IsSwiping(SwipeDirection dir)
+    {
+        return (Direction & dir) == dir;
+    }
+}
