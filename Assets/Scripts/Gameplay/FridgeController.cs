@@ -19,7 +19,7 @@ public class FridgeController : MonoBehaviour {
         fridgeClose_bkg.SetActive(true);
         fridgeOpen_bkg.SetActive(false);
     }
-	
+
 	// Update is called once per frame
 	void Update () {
         if (!GameProgress.IS_GAME_ACTIVE || GameProgress.GAME_TIME - timeOpenFridge > delta)
@@ -28,6 +28,8 @@ public class FridgeController : MonoBehaviour {
             fridgeOpen.SetActive(false);
             fridgeClose_bkg.SetActive(true);
             fridgeOpen_bkg.SetActive(false);
+
+            FoodControl.ClearGeneratedFood();
         }
         if (GameProgress.IS_GAME_ACTIVE)
         {
@@ -38,8 +40,8 @@ public class FridgeController : MonoBehaviour {
                 fridgeClose_bkg.SetActive(false);
                 fridgeOpen_bkg.SetActive(true);
 
-                FoodControl.FoodGenerate_kill_me_please();
-                FridgeController.timeOpenFridge = GameProgress.GAME_TIME;
+                FoodControl.FoodGenerate();
+                timeOpenFridge = GameProgress.GAME_TIME;
             }
             else if (SwipeManager.IsSwiping(SwipeDirection.Left))
             {
@@ -47,6 +49,8 @@ public class FridgeController : MonoBehaviour {
                 fridgeOpen.SetActive(false);
                 fridgeClose_bkg.SetActive(true);
                 fridgeOpen_bkg.SetActive(false);
+
+                FoodControl.ClearGeneratedFood();
             }
         }
     }

@@ -7,15 +7,17 @@ public class SaturationBarController : MonoBehaviour {
 
     public Slider saturationBar;
     public Text score;
-    public float barSpeedMax = 30f;
-
-    private float maxValue = 100;
     public static float currValue;
-    private int TOTAL_TIME = 6;
-    private float coef_help = 0;
-    private float delta = 0.005f;
 
-    private float barSpeedCurrent;
+    [SerializeField]
+    private int TOTAL_TIME = 6;
+    [SerializeField]
+    private float DELTA = 0.0005f;
+    [SerializeField]
+    private float COEF_MAX = 0.035f;
+
+    private float maxValue = 100f;
+    private float coef_help = 0f;
 
     // Use this for initialization
     void Start () {
@@ -25,7 +27,7 @@ public class SaturationBarController : MonoBehaviour {
         GameProgress.IS_GAME_ACTIVE = true;
         coef_help = 0;
     }
-	
+
 	// Update is called once per frame
 	void Update () {
         if (GameProgress.IS_GAME_ACTIVE)
@@ -45,16 +47,13 @@ public class SaturationBarController : MonoBehaviour {
 	}
 
     private void BarUpdate()
-    {        
+    {
         currValue -= ((Time.deltaTime + coef_help) * maxValue) / TOTAL_TIME;
         saturationBar.value = currValue;
 
-        barSpeedCurrent = (maxValue - currValue) / GameProgress.GAME_TIME;
-        //Debug.Log(barSpeedCurrent);
-
-        if (barSpeedCurrent < barSpeedMax)
+        if (coef_help < COEF_MAX)
         {
-            coef_help += delta;
+          coef_help += DELTA;
         }
     }
 }
