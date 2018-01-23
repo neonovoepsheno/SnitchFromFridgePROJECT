@@ -708,7 +708,7 @@ GameObject:
   - component: {fileID: 570526926}
   - component: {fileID: 570526925}
   m_Layer: 4
-  m_Name: zakryt
+  m_Name: CloseState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -780,7 +780,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 570526922}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a34c83dee0db4db408ea1f91c5425a4e, type: 3}
+  m_Script: {fileID: 11500000, guid: 1270c0b53477c894e8582511f2821a91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fridgeOpen: {fileID: 2116319097}
@@ -2446,7 +2446,7 @@ GameObject:
   - component: {fileID: 2116319101}
   - component: {fileID: 2116319100}
   m_Layer: 0
-  m_Name: otkryt_pustoy
+  m_Name: OpenState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2518,7 +2518,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2116319097}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a34c83dee0db4db408ea1f91c5425a4e, type: 3}
+  m_Script: {fileID: 11500000, guid: 1270c0b53477c894e8582511f2821a91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fridgeOpen: {fileID: 2116319097}
@@ -2548,5 +2548,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 13.2, y: 20.67}
+  m_Size: {x: 12.05, y: 20.67}
   m_EdgeRadius: 0

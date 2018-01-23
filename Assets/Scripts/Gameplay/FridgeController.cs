@@ -11,6 +11,9 @@ public class FridgeController : MonoBehaviour {
 
     public float delta = .30f;
     public static float timeOpenFridge;
+    [SerializeField]
+    private bool swipe_enable = true;
+    public static bool SWIPE_ENABLE;
 
     // Use this for initialization
     void Start () {
@@ -18,6 +21,8 @@ public class FridgeController : MonoBehaviour {
         fridgeOpen.SetActive(false);
         fridgeClose_bkg.SetActive(true);
         fridgeOpen_bkg.SetActive(false);
+
+        SWIPE_ENABLE = swipe_enable;
     }
 
 	// Update is called once per frame
@@ -35,6 +40,8 @@ public class FridgeController : MonoBehaviour {
         {
             if (SwipeManager.IsSwiping(SwipeDirection.Right) && !fridgeOpen.activeSelf)
             {
+              if (SWIPE_ENABLE)
+              {
                 fridgeClose.SetActive(false);
                 fridgeOpen.SetActive(true);
                 fridgeClose_bkg.SetActive(false);
@@ -42,15 +49,19 @@ public class FridgeController : MonoBehaviour {
 
                 FoodControl.FoodGenerate();
                 timeOpenFridge = GameProgress.GAME_TIME;
+              }
             }
             else if (SwipeManager.IsSwiping(SwipeDirection.Left))
             {
+              if (SWIPE_ENABLE)
+              {
                 fridgeClose.SetActive(true);
                 fridgeOpen.SetActive(false);
                 fridgeClose_bkg.SetActive(true);
                 fridgeOpen_bkg.SetActive(false);
 
                 FoodControl.ClearGeneratedFood();
+              }
             }
         }
     }
