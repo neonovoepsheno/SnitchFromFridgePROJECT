@@ -8,8 +8,17 @@ public class SwipeManager : MonoBehaviour {
 
     private static SwipeDirection Direction { set; get; }
 
+    [SerializeField]
+    private bool swipe_enable = true;
+    public static bool SWIPE_ENABLE;
+
     private Vector3 touchPosition;
     private float swipeResistanceX = 50f;
+
+    private void Start()
+    {
+      SWIPE_ENABLE = swipe_enable;
+    }
 
     private void Update()
     {
