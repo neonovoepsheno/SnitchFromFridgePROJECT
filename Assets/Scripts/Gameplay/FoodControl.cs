@@ -27,7 +27,7 @@ public class FoodControl : MonoBehaviour {
             {
                 if (Random.Range(0, 2) == 1)
                 {
-                  for (int iter = 0; iter < Random.Range(0, 5); iter++)
+                  for (int iter = 0; iter < Random.Range(1, 5); iter++)
                   {
                     GameObject tempFood = Instantiate(foodPrefab[i]);
                     tempFood.AddComponent<FoodController>();
