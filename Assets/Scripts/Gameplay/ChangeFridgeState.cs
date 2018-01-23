@@ -10,7 +10,7 @@ public class ChangeFridgeState : MonoBehaviour {
 
   public void OnMouseDown()
   {
-    if (!FridgeController.SWIPE_ENABLE)
+    if (!SwipeManager.SWIPE_ENABLE)
     {
       fridgeClose.SetActive(!fridgeClose.activeSelf);
       fridgeOpen.SetActive(!fridgeOpen.activeSelf);
