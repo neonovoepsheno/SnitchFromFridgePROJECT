@@ -23,6 +23,7 @@ public class ChangeFridgeState : MonoBehaviour
             fridgeOpen_bkg.SetActive(!fridgeOpen_bkg.activeSelf);
             if (!fridgeClose.activeSelf)
             {
+                GameProgress.FRIDGE_OPEN_COUNTER++;
                 FoodControl.FoodGenerate();
                 FridgeController.timeOpenFridge = GameProgress.GAME_TIME;
             }

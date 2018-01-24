@@ -338,8 +338,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saturationBar: {fileID: 615304596}
   score: {fileID: 1276664322}
-  TOTAL_TIME: 30
-  DELTA: 0.000000001
+  TOTAL_TIME: 6
+  DELTA: 0.00005
   COEF_MAX: 0.035
 --- !u!114 &169553019
 MonoBehaviour:
@@ -803,7 +803,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: d8eff84c17156204e9fa070e0d308ca6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1608,7 +1608,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!224 &1352817181
 RectTransform:

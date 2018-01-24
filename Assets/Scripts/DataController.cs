@@ -22,4 +22,16 @@ public class DataController : MonoBehaviour {
             //Debug.Log(productCollection.products[0].ProductType);
         }
     }
+
+    public static Product GetProductByID(string p_id)
+    {
+        for (int i = 0; i < productCollection.products.Length; i++)
+        {
+            if (p_id.Equals(productCollection.products[i].ProductID) || p_id.Equals(productCollection.products[i].ProductID + "(Clone)"))
+            {
+                return productCollection.products[i];
+            }
+        }
+        return null;
+    }
 }

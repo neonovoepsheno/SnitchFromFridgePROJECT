@@ -11,12 +11,16 @@ public class GameProgress : MonoBehaviour
 
     public static float GAME_TIME;
 
+    public static int FRIDGE_OPEN_COUNTER;
+
     void Start()
     {
         BEST_SCORE = PlayerPrefs.GetFloat("BEST_SCORE", 0);
         CURRENT_SCORE = 0;
 
         GAME_TIME = 0;
+
+        FRIDGE_OPEN_COUNTER = 0;
     }
 
     void Update()

@@ -47,6 +47,7 @@ public class FridgeController : MonoBehaviour
 
                     FoodControl.FoodGenerate();
                     timeOpenFridge = GameProgress.GAME_TIME;
+                    GameProgress.FRIDGE_OPEN_COUNTER++;
                 }
             }
             else if (SwipeManager.IsSwiping(SwipeDirection.Left))

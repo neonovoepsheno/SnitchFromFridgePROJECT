@@ -9,7 +9,7 @@ public class FoodControl : MonoBehaviour
 
     public GameObject[] food;
 
-    private static List<GameObject> generatedFood = new List<GameObject>();
+    private static List<GeneratedFoodItem> generatedFood = new List<GeneratedFoodItem>();
     private static float[] y = { 6f, 3.65f, -1.96f, 0.5f, -4.66f };
     private static float[] x = { -3f, 0f };
     private static GameObject[] foodPrefab;
@@ -31,7 +31,8 @@ public class FoodControl : MonoBehaviour
                     {
                         GameObject tempFood = Instantiate(foodPrefab[i]);
                         tempFood.AddComponent<FoodController>();
-                        generatedFood.Add(tempFood);
+
+                        generatedFood.Add(new GeneratedFoodItem(tempFood, GameProgress.FRIDGE_OPEN_COUNTER));
                         tempFood.SetActive(true);
                         tempFood.transform.position = new Vector3(Random.Range(x[0], x[1]), y[Random.Range(0, y.Length - 1)], 6f);
                     }
@@ -53,15 +54,15 @@ public class FoodControl : MonoBehaviour
     {
         for (int i = 0; i < generatedFood.Count; i++)
         {
-            if (!generatedFood[i].activeSelf)
+            Product product = DataController.GetProductByID(generatedFood[i].go.name);
+            if (!generatedFood[i].go.activeSelf)
                 generatedFood.Remove(generatedFood[i]);
-            else
+            else if (generatedFood[i].GetExistance(GameProgress.FRIDGE_OPEN_COUNTER) % product.RottenAppeare == 0)
             {
-                Debug.Log(generatedFood[i].name + " become rot");
-                generatedFood[i].transform.GetChild(0).gameObject.SetActive(false);
-                generatedFood[i].transform.GetChild(1).gameObject.SetActive(true);
+                generatedFood[i].go.transform.GetChild(0).gameObject.SetActive(false);
+                generatedFood[i].go.transform.GetChild(1).gameObject.SetActive(true);
+                product.State = "rot";
             }
         }
-        generatedFood = new List<GameObject>();
     }
 }
