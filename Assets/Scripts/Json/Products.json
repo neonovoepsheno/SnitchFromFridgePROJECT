@@ -1,0 +1,35 @@
+﻿[
+  {
+    "ProductID": "apple",
+    "ProductType": "fruit",
+    "Satiety": 2,
+    "PerGeneration": 75,
+    "IntervalAppearence": [ 4, 6 ],
+    "PerRottenAppearence": 10,
+    "RottenActionTime": 1.2,
+    "RottenAppeare": 1,
+     "State": "ok"
+  },
+  {
+    "ProductID": "beefsteak",
+    "ProductType": "meat",
+    "Satiety": 20,
+    "PerGeneration": 45,
+    "IntervalAppearence": [ 16 ],
+    "PerRottenAppearence": 10,
+    "RottenActionTime": 2.7,
+    "RottenAppeare": 1,
+    "State": "ok"
+  },
+  {
+    "ProductID": "burger",
+    "ProductType": "dish",
+    "Satiety": 35,
+    "PerGeneration": 35,
+    "IntervalAppearence": [ 20 ],
+    "PerRottenAppearence": 40,
+    "RottenActionTime": 3.5,
+    "RottenAppeare": 1,
+    "State": "ok"
+  }
+]

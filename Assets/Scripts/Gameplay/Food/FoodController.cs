@@ -27,7 +27,7 @@ public class FoodController : MonoBehaviour
     {
         this.gameObject.SetActive(false);
         string name = this.gameObject.name;
-        if (name == "apple_ok(Clone)")
+        if (name == "apple(Clone)")
         {
             SaturationBarController.currValue += 2 / coef;
             SaturationBarController.maxValue += 2 / coef;
@@ -40,7 +40,7 @@ public class FoodController : MonoBehaviour
             SaturationBarController.currValue += 2 * coef_for_rot;
             SaturationBarController.maxValue += 2 * coef_for_rot;
         }
-        else if (name == "burger_ok(Clone)")
+        else if (name == "burger(Clone)")
         {
             SaturationBarController.currValue += 35 / coef;
             SaturationBarController.maxValue += 35 / coef;
@@ -53,7 +53,7 @@ public class FoodController : MonoBehaviour
             SaturationBarController.currValue += 35 * coef_for_rot;
             SaturationBarController.maxValue += 35 * coef_for_rot;
         }
-        else if (name == "meat_ok(Clone)")
+        else if (name == "beefsteak(Clone)")
         {
             SaturationBarController.currValue += 20 / coef;
             SaturationBarController.maxValue += 20 / coef;
@@ -70,10 +70,10 @@ public class FoodController : MonoBehaviour
 
     public void OnCollisionStay(Collision collision)
     {
-      if (changePositionCounter < 5)
-      {
-        changePositionCounter++;
-        FoodControl.ChangeObjectPosition(this.gameObject);
-      }
+        if (changePositionCounter < 5)
+        {
+            changePositionCounter++;
+            FoodControl.ChangeObjectPosition(this.gameObject);
+        }
     }
 }
