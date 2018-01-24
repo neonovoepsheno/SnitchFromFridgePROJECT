@@ -54,14 +54,20 @@ public class FoodControl : MonoBehaviour
     {
         for (int i = 0; i < generatedFood.Count; i++)
         {
-            Product product = DataController.GetProductByID(generatedFood[i].go.name);
-            if (!generatedFood[i].go.activeSelf)
-                generatedFood.Remove(generatedFood[i]);
-            else if (generatedFood[i].GetExistance(GameProgress.FRIDGE_OPEN_COUNTER) % product.RottenAppeare == 0)
+            if (generatedFood[i].go != null)
             {
-                generatedFood[i].go.transform.GetChild(0).gameObject.SetActive(false);
-                generatedFood[i].go.transform.GetChild(1).gameObject.SetActive(true);
-                product.State = "rot";
+                Product product = DataController.GetProductByID(generatedFood[i].go.name);
+                if (!generatedFood[i].go.activeSelf)
+                {
+                    Destroy(generatedFood[i].go);
+                    generatedFood.Remove(generatedFood[i]);
+                }
+                else if (generatedFood[i].GetExistance(GameProgress.FRIDGE_OPEN_COUNTER) % product.RottenAppeare == 0)
+                {
+                    generatedFood[i].go.transform.GetChild(0).gameObject.SetActive(false);
+                    generatedFood[i].go.transform.GetChild(1).gameObject.SetActive(true);
+                    product.State = "rot";
+                }
             }
         }
     }
