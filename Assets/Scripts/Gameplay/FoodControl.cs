@@ -10,8 +10,8 @@ public class FoodControl : MonoBehaviour
     public GameObject[] food;
 
     private static List<GeneratedFoodItem> generatedFood = new List<GeneratedFoodItem>();
-    private static float[] y = { 6f, 3.65f, -1.96f, 0.5f, -4.66f };
-    private static float[] x = { -3f, 0f };
+    private static float[] y = { 31.1f, 16.9f, -3.2f, -16.7f, -33.5f };
+    private static float[] x = { -20.3f, -1.1f };
     private static GameObject[] foodPrefab;
 
     private void Start()
@@ -34,7 +34,7 @@ public class FoodControl : MonoBehaviour
 
                         generatedFood.Add(new GeneratedFoodItem(tempFood, GameProgress.FRIDGE_OPEN_COUNTER));
                         tempFood.SetActive(true);
-                        tempFood.transform.position = new Vector3(Random.Range(x[0], x[1]), y[Random.Range(0, y.Length - 1)], 6f);
+                        tempFood.transform.position = new Vector3(Random.Range(x[0], x[1]), y[Random.Range(0, y.Length - 1)], 0f);
                     }
                 }
             }
