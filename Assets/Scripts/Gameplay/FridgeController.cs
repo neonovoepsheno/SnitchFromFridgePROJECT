@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FridgeController : MonoBehaviour {
+public class FridgeController : MonoBehaviour
+{
 
     public GameObject fridgeOpen;
     public GameObject fridgeClose;
@@ -13,15 +14,17 @@ public class FridgeController : MonoBehaviour {
     public static float timeOpenFridge;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         fridgeClose.SetActive(true);
         fridgeOpen.SetActive(false);
         fridgeClose_bkg.SetActive(true);
         fridgeOpen_bkg.SetActive(false);
     }
 
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update()
+    {
         if (!GameProgress.IS_GAME_ACTIVE || GameProgress.GAME_TIME - timeOpenFridge > delta)
         {
             fridgeClose.SetActive(true);
@@ -35,28 +38,29 @@ public class FridgeController : MonoBehaviour {
         {
             if (SwipeManager.IsSwiping(SwipeDirection.Right) && !fridgeOpen.activeSelf)
             {
-              if (SwipeManager.SWIPE_ENABLE)
-              {
-                fridgeClose.SetActive(false);
-                fridgeOpen.SetActive(true);
-                fridgeClose_bkg.SetActive(false);
-                fridgeOpen_bkg.SetActive(true);
+                if (SwipeManager.SWIPE_ENABLE)
+                {
+                    fridgeClose.SetActive(false);
+                    fridgeOpen.SetActive(true);
+                    fridgeClose_bkg.SetActive(false);
+                    fridgeOpen_bkg.SetActive(true);
 
-                FoodControl.FoodGenerate();
-                timeOpenFridge = GameProgress.GAME_TIME;
-              }
+                    FoodControl.FoodGenerate();
+                    timeOpenFridge = GameProgress.GAME_TIME;
+                    GameProgress.FRIDGE_OPEN_COUNTER++;
+                }
             }
             else if (SwipeManager.IsSwiping(SwipeDirection.Left))
             {
-              if (SwipeManager.SWIPE_ENABLE)
-              {
-                fridgeClose.SetActive(true);
-                fridgeOpen.SetActive(false);
-                fridgeClose_bkg.SetActive(true);
-                fridgeOpen_bkg.SetActive(false);
+                if (SwipeManager.SWIPE_ENABLE)
+                {
+                    FoodControl.ClearGeneratedFood();
 
-                FoodControl.ClearGeneratedFood();
-              }
+                    fridgeClose.SetActive(true);
+                    fridgeOpen.SetActive(false);
+                    fridgeClose_bkg.SetActive(true);
+                    fridgeOpen_bkg.SetActive(false);
+                }
             }
         }
     }

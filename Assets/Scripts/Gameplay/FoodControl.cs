@@ -4,19 +4,19 @@ using UnityEngine;
 
 //добавь rigidbody, чтобы они падали
 
-public class FoodControl : MonoBehaviour {
+public class FoodControl : MonoBehaviour
+{
 
-    //public static string[] food = { "apple_ok", "burger_ok", "meat_ok"};
     public GameObject[] food;
 
-    private static List<GameObject> generatedFood = new List<GameObject>();
+    private static List<GeneratedFoodItem> generatedFood = new List<GeneratedFoodItem>();
     private static float[] y = { 6f, 3.65f, -1.96f, 0.5f, -4.66f };
-    private static float[] x = { -3f, 0f};
+    private static float[] x = { -3f, 0f };
     private static GameObject[] foodPrefab;
 
     private void Start()
     {
-      foodPrefab = food;
+        foodPrefab = food;
     }
 
     public static void FoodGenerate()
@@ -27,14 +27,15 @@ public class FoodControl : MonoBehaviour {
             {
                 if (Random.Range(0, 2) == 1)
                 {
-                  for (int iter = 0; iter < Random.Range(1, 5); iter++)
-                  {
-                    GameObject tempFood = Instantiate(foodPrefab[i]);
-                    tempFood.AddComponent<FoodController>();
-                    generatedFood.Add(tempFood);
-                    tempFood.SetActive(true);
-                    tempFood.transform.position = new Vector3(Random.Range(x[0], x[1]), y[Random.Range(0, y.Length - 1)], 6f);
-                  }
+                    for (int iter = 0; iter < Random.Range(1, 2); iter++)
+                    {
+                        GameObject tempFood = Instantiate(foodPrefab[i]);
+                        tempFood.AddComponent<FoodController>();
+
+                        generatedFood.Add(new GeneratedFoodItem(tempFood, GameProgress.FRIDGE_OPEN_COUNTER));
+                        tempFood.SetActive(true);
+                        tempFood.transform.position = new Vector3(Random.Range(x[0], x[1]), y[Random.Range(0, y.Length - 1)], 6f);
+                    }
                 }
             }
             else
@@ -46,15 +47,22 @@ public class FoodControl : MonoBehaviour {
 
     public static void ChangeObjectPosition(GameObject foodObject)
     {
-      foodObject.transform.position = new Vector3(Random.Range(x[0], x[1]), y[Random.Range(0, y.Length - 1)], 6f);
+        foodObject.transform.position = new Vector3(Random.Range(x[0], x[1]), y[Random.Range(0, y.Length - 1)], 6f);
     }
 
     public static void ClearGeneratedFood()
     {
-      for (int i = 0; i < generatedFood.Count; i++)
-      {
-        Destroy(generatedFood[i]);
-      }
-      generatedFood = new List<GameObject>();
+        for (int i = 0; i < generatedFood.Count; i++)
+        {
+            Product product = DataController.GetProductByID(generatedFood[i].go.name);
+            if (!generatedFood[i].go.activeSelf)
+                generatedFood.Remove(generatedFood[i]);
+            else if (generatedFood[i].GetExistance(GameProgress.FRIDGE_OPEN_COUNTER) % product.RottenAppeare == 0)
+            {
+                generatedFood[i].go.transform.GetChild(0).gameObject.SetActive(false);
+                generatedFood[i].go.transform.GetChild(1).gameObject.SetActive(true);
+                product.State = "rot";
+            }
+        }
     }
 }
