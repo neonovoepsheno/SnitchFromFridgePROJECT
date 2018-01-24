@@ -37,9 +37,10 @@ GameObject:
   - component: {fileID: 4451050573590142}
   - component: {fileID: 114136974752062690}
   - component: {fileID: 70203300916309480}
+  - component: {fileID: 50241143364669008}
   m_Layer: 0
   m_Name: burger
-  m_TagString: Untagged
+  m_TagString: food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53,8 +54,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4789365797918406}
   - component: {fileID: 212519704447067668}
-  - component: {fileID: 114126731861105208}
-  - component: {fileID: 50077519062550982}
   m_Layer: 0
   m_Name: burger_ok
   m_TagString: food
@@ -69,8 +68,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1141358618086342}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -2.55}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 4789365797918406}
   - {fileID: 4996538337191098}
@@ -103,22 +102,22 @@ Transform:
   m_Father: {fileID: 4451050573590142}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50077519062550982
+--- !u!50 &50241143364669008
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1626651532191592}
-  m_BodyType: 2
+  m_GameObject: {fileID: 1141358618086342}
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.0001
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 6200000, guid: 0b1b658ba7a195a41898cbd5c0375d7f, type: 2}
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -132,23 +131,12 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1.62, y: 1.55}
   m_Direction: 1
---- !u!114 &114126731861105208
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1626651532191592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3b6df35333969743bb516b6b6e5d710, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114136974752062690
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -160,6 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3b6df35333969743bb516b6b6e5d710, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coef_for_ok: 1
+  coef_for_rot: 0.43
 --- !u!212 &212175627275747098
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -193,7 +183,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 592aa0eea25ccf34a8acfd1e57f9e0ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -237,7 +227,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 2b76d7c50aa2cb948a9dfb696cfa0456, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -90,12 +90,21 @@ public class FoodController : MonoBehaviour
         }
     }
 
-    public void OnCollisionStay(Collision collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if (changePositionCounter < 5)
-        {
-            changePositionCounter++;
-            FoodControl.ChangeObjectPosition(this.gameObject);
-        }
+        //if (collision.gameObject.tag.Equals("food"))
+        //{
+        //    if (changePositionCounter < 3)
+        //    {
+        //        Debug.Log(collision.gameObject.name + "DETECTED");
+        //        changePositionCounter++;
+        //        FoodControl.ChangeObjectPosition(this.gameObject);
+        //    }
+        //    else
+        //    {
+        //        Debug.Log("whats next?");
+        //        this.gameObject.SetActive(false);
+        //    }
+        //}
     }
 }
