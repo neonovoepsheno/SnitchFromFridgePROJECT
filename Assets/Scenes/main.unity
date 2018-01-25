@@ -356,6 +356,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saturationBar: {fileID: 615304596}
   score: {fileID: 1276664322}
+  TOTAL_TIME: 12
+  DELTA: 0.0001
+  COEF_MAX: 0.03
 --- !u!114 &169553019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -778,7 +781,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 570526922}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.4, y: -0, z: 0}
+  m_LocalPosition: {x: -10.4, y: -0, z: -1}
   m_LocalScale: {x: 5.982807, y: 5.6630588, z: 6.265269}
   m_Children:
   - {fileID: 1529419900}
@@ -1361,7 +1364,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1080790687}
   m_LocalRotation: {x: -0, y: -0, z: 0.13640721, w: 0.9906529}
-  m_LocalPosition: {x: 4.8, y: -0.98, z: -1}
+  m_LocalPosition: {x: -3.63, y: -6.32, z: -1}
   m_LocalScale: {x: 1.0006135, y: 1.000613, z: 1}
   m_Children: []
   m_Father: {fileID: 1529419900}
@@ -1822,6 +1825,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swipe_enable: 1
+  minSwipeLength: 0.5
+  triggerSwipeAtMinLength: 0
+  useEightDirections: 0
 --- !u!114 &1345433416
 MonoBehaviour:
   m_ObjectHideFlags: 0
