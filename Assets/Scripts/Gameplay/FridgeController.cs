@@ -10,15 +10,15 @@ public class FridgeController : MonoBehaviour
     public GameObject fridgeOpen_bkg;
     public GameObject fridgeClose_bkg;
 
-    public float delta = .30f;
+    [SerializeField]
+    private float delta;
     public static float DELTA;
+
     public static float timeOpenFridge;
 
     // Use this for initialization
     void Start()
     {
-        delta = 1.5f;
-        DELTA = delta;
         fridgeClose.SetActive(true);
         fridgeOpen.SetActive(false);
         fridgeClose_bkg.SetActive(true);
@@ -28,44 +28,52 @@ public class FridgeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        delta = DELTA;
-        if (!GameProgress.IS_GAME_ACTIVE || GameProgress.GAME_TIME - timeOpenFridge > delta)
+        if (!GameProgress.IS_GAME_ACTIVE)
         {
-            fridgeClose.SetActive(true);
-            fridgeOpen.SetActive(false);
-            fridgeClose_bkg.SetActive(true);
-            fridgeOpen_bkg.SetActive(false);
-
-            FoodControl.ClearGeneratedFood();
+            CloseFridge();
         }
-        if (GameProgress.IS_GAME_ACTIVE)
+        else
         {
-            if (SwipeManager.IsSwiping(SwipeDirection.Right) && !fridgeOpen.activeSelf)
+            if (SwipeManager.IsSwipingRight() && !fridgeOpen.activeSelf)
             {
                 if (SwipeManager.SWIPE_ENABLE)
                 {
-                    fridgeClose.SetActive(false);
-                    fridgeOpen.SetActive(true);
-                    fridgeClose_bkg.SetActive(false);
-                    fridgeOpen_bkg.SetActive(true);
-
-                    FoodControl.FoodGenerate();
-                    timeOpenFridge = GameProgress.GAME_TIME;
-                    GameProgress.FRIDGE_OPEN_COUNTER++;
+                    OpenFridge();
                 }
             }
-            else if (SwipeManager.IsSwiping(SwipeDirection.Left))
+            else if (SwipeManager.IsSwipingLeft())
             {
                 if (SwipeManager.SWIPE_ENABLE)
                 {
-                    FoodControl.ClearGeneratedFood();
-
-                    fridgeClose.SetActive(true);
-                    fridgeOpen.SetActive(false);
-                    fridgeClose_bkg.SetActive(true);
-                    fridgeOpen_bkg.SetActive(false);
+                    CloseFridge();
                 }
             }
+            if (GameProgress.GAME_TIME - timeOpenFridge > delta)
+            {
+                CloseFridge();
+            }
         }
+    }
+
+    private void CloseFridge()
+    {
+        FoodControl.ClearGeneratedFood();
+
+        fridgeClose.SetActive(true);
+        fridgeOpen.SetActive(false);
+        fridgeClose_bkg.SetActive(true);
+        fridgeOpen_bkg.SetActive(false);
+    }
+
+    private void OpenFridge()
+    {
+        fridgeClose.SetActive(false);
+        fridgeOpen.SetActive(true);
+        fridgeClose_bkg.SetActive(false);
+        fridgeOpen_bkg.SetActive(true);
+
+        FoodControl.FoodGenerate();
+        timeOpenFridge = GameProgress.GAME_TIME;
+        GameProgress.FRIDGE_OPEN_COUNTER++;
     }
 }

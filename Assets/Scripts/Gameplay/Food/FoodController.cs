@@ -36,7 +36,6 @@ public class FoodController : MonoBehaviour
             {
                 float newValue = product.Satiety / coef_for_ok;
                 SaturationBarController.currValue += newValue;
-                SaturationBarController.maxValue += newValue;
             }
             else if (product.State.Equals("rot"))
             {
@@ -45,7 +44,6 @@ public class FoodController : MonoBehaviour
                 coef_for_ok = 2;
                 float newValue = product.Satiety * coef_for_rot;
                 SaturationBarController.currValue += newValue;
-                SaturationBarController.maxValue += newValue;
             }
         }
         {//if (name == "apple(Clone)")

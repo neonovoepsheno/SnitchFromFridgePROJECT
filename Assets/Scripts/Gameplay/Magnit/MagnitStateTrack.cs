@@ -33,7 +33,7 @@ public class MagnitStateTrack : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("fridge"))
         {
-            FridgeController.DELTA = 1.5f;
+            //FridgeController.DELTA = 1.5f;
             GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX;
         }
     }
@@ -42,7 +42,7 @@ public class MagnitStateTrack : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("fridge"))
         {
-            FridgeController.DELTA = 3f;
+            //FridgeController.DELTA = 3f;
             GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         }
     }

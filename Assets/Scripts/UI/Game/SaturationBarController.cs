@@ -9,26 +9,19 @@ public class SaturationBarController : MonoBehaviour
     public Slider saturationBar;
     public Text score;
     public static float currValue;
-    public static float maxValue;
     
-    private float TOTAL_TIME;
-    private float DELTA;
-    private float _delta_start;
-    private float COEF_MAX;
-    private float _coef_max_start;
-    private float coef_help;
+    [SerializeField]
+    private float TOTAL_TIME = 20f;
+    [SerializeField]
+    private float DELTA = 0.0001f;
+    [SerializeField]
+    private float COEF_MAX = 0.035f;
+    private float coef_help = 0;
+    private float maxValue = 100f;
 
     // Use this for initialization
     void Start()
     {
-        coef_help = 0;
-        COEF_MAX = 0.035f;
-        _coef_max_start = COEF_MAX;
-        DELTA = 0.0001f;
-        _delta_start = DELTA;
-        maxValue = 100f;
-        TOTAL_TIME = 6f;
-
         score.gameObject.SetActive(true);
         currValue = maxValue;
         saturationBar.value = currValue;
@@ -38,9 +31,9 @@ public class SaturationBarController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TOTAL_TIME = (6f * maxValue) / 100f;
-        COEF_MAX = (_coef_max_start * maxValue) / 100f;
-        DELTA = (_delta_start * maxValue) / 100f;
+        //TOTAL_TIME = (6f * maxValue) / 100f;
+        //COEF_MAX = (_coef_max_start * maxValue) / 100f;
+        //DELTA = (_delta_start * maxValue) / 100f;
         if (GameProgress.IS_GAME_ACTIVE)
         {
             GameProgress.CURRENT_SCORE += Time.deltaTime;
@@ -55,7 +48,6 @@ public class SaturationBarController : MonoBehaviour
                 score.gameObject.SetActive(false);
             }
         }
-        saturationBar.maxValue = maxValue;
     }
 
     private void BarUpdate()
