@@ -25,7 +25,6 @@ public class SaturationBarController : MonoBehaviour
         score.gameObject.SetActive(true);
         currValue = maxValue;
         saturationBar.value = currValue;
-        GameProgress.IS_GAME_ACTIVE = true;
     }
 
     // Update is called once per frame
@@ -36,7 +35,6 @@ public class SaturationBarController : MonoBehaviour
         //DELTA = (_delta_start * maxValue) / 100f;
         if (GameProgress.IS_GAME_ACTIVE)
         {
-            GameProgress.CURRENT_SCORE += Time.deltaTime;
             score.text = "Score " + string.Format("{0:N2}", GameProgress.CURRENT_SCORE);
             if (currValue > 0)
             {
@@ -47,17 +45,18 @@ public class SaturationBarController : MonoBehaviour
                 GameProgress.IS_GAME_ACTIVE = false;
                 score.gameObject.SetActive(false);
             }
+            GameProgress.CURRENT_SCORE += Time.deltaTime;
         }
     }
 
     private void BarUpdate()
     {
         currValue -= ((Time.deltaTime + coef_help) * maxValue) / TOTAL_TIME;
-        saturationBar.value = currValue;
 
         if (coef_help < COEF_MAX)
         {
             coef_help += DELTA;
         }
+        saturationBar.value = currValue;
     }
 }

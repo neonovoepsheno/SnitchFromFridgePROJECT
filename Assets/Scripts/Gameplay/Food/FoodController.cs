@@ -15,6 +15,7 @@ public class FoodController : MonoBehaviour
 
     private void Start()
     {
+        time_of_action = 0;
     }
 
     private void Update()
@@ -22,6 +23,7 @@ public class FoodController : MonoBehaviour
         if (start_time > time_of_action)
         {
             coef_for_ok = 1;
+            time_of_action = 0;
         }
         start_time += Time.deltaTime;
     }

@@ -34,7 +34,7 @@ public class FoodControl : MonoBehaviour
 
                         generatedFood.Add(new GeneratedFoodItem(tempFood, GameProgress.FRIDGE_OPEN_COUNTER));
                         tempFood.SetActive(true);
-                        tempFood.transform.position = new Vector3(Random.Range(x[0], x[1]), y[Random.Range(0, y.Length - 1)], 0f);
+                        tempFood.transform.position = new Vector3(Random.Range(x[0], x[1]), y[Random.Range(0, y.Length - 1)], -1f);
                     }
                 }
             }

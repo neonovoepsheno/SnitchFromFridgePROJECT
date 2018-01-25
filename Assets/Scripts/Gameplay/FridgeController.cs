@@ -48,7 +48,7 @@ public class FridgeController : MonoBehaviour
                     CloseFridge();
                 }
             }
-            if (GameProgress.GAME_TIME - timeOpenFridge > delta)
+            if (GameProgress.GAME_TIME - timeOpenFridge > delta && fridgeOpen.activeSelf)
             {
                 CloseFridge();
             }
